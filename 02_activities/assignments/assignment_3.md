@@ -7,23 +7,108 @@
 - Choose a dataset of interest from the [City of Toronto’s Open Data Portal](https://www.toronto.ca/city-government/data-research-maps/open-data/) or [Ontario’s Open Data Catalogue](https://data.ontario.ca/). 
 - Using Python and one other data visualization software (Excel or free alternative, Tableau Public, any other tool you prefer), create two distinct visualizations from your dataset of choice.  
 - For each visualization, describe and justify: 
-    > What software did you use to create your data visualization?
 
-    > Who is your intended audience? 
+## First Visualization
+### Toronto Parking Facilities: Low/Moderate vs High-Demand Distribution (2024)
+![Parking occupancy histogram](parking_with_findings.png)
+
+<mark>What software did you use to create your data visualization?</mark><br>
+I used Python with Matplotlib, Seaborn, and Pandas libraries
+
+<mark>Who is your intended audience? </mark><br>
+    Toronto Parking Authority administrators and City planners and transportation policy makers
+
+<mark>What information or message are you trying to convey with your visualization? </mark><br>
+    Toronto's parking facilities show uneven utilization: while most operate below 75% capacity, specific high-demand locations need attention, and some facilities exceed 100% occupancy due to overselling monthly permits. The histogram shows:
+    - 69% of facilities operate at moderate to low capacity 
+    - 31% are high-demand (75%+ occupancy)  
+    - 9 facilities are over-capacity, suggesting need for expansion or demand management
+
+<mark>What aspects of design did you consider when making your visualization? How did you apply them? With what elements of your plots? </mark><br>
+    - **Color Coding**: Traffic light colors (green→yellow→orange→red) to indicate occupancy levels from safe to critical.
+    - **Clarity:** Direct data labels on bars eliminate need to read y-axis precisely. Clear bins with descriptive categories.
+    - **Context:** Statistics box provides reference numbers. Interpretation note explains why >100% is possible.
     
-    > What information or message are you trying to convey with your visualization? 
-    
-    > What aspects of design did you consider when making your visualization? How did you apply them? With what elements of your plots? 
-    
-    > How did you ensure that your data visualizations are reproducible? If the tool you used to make your data visualization is not reproducible, how will this impact your data visualization? 
-    
-    > How did you ensure that your data visualization is accessible?  
-    
-    > Who are the individuals and communities who might be impacted by your visualization?  
-    
-    > How did you choose which features of your chosen dataset to include or exclude from your visualization? 
-    
-    > What ‘underwater labour’ contributed to your final data visualization product?
+ <mark>How did you ensure that your data visualizations are reproducible? If the tool you used to make your data visualization is not reproducible, how will this impact your data visualization? </mark><br>
+All the code are well documented and no need to download any dataset. The dataset that used by fetching the metadata from the "parking-occupancy" dataset and convert the API data to a dataframe. All parameters (colors, bins, fonts) explicitly defined in code
+
+If a non-reproducible tool like manual Excel charting were used, it would be nearly impossible to guarantee the same result. This would impact the visualization by making it unreliable for auditing, difficult to update with new data, and untrustworthy for making important policy decisions.
+
+<mark>How did you ensure that your data visualization is accessible?  </mark><br>
+    - **High contrast:** Dark text on light background, colored bars with black borders
+    - **Not color-dependent:** Beside colors, each bar labeled with numbers, readable in grayscale
+    - **Large fonts:** 10-15pt sizes, readable from distance or when printed
+    - **Simple chart type:** Histogram universally understood
+    - **Clear interpretation:** Annotation boxes explain what the data means
+
+<mark>Who are the individuals and communities who might be impacted by your visualization? </mark> <br>
+    - TPA operations and financial planning teams
+    - City government making infrastructure decisions
+    - Commuters and residents choosing where to park
+    - Business owners dependent on customer parking
+
+<mark>How did you choose which features of your chosen dataset to include or exclude from your visualization? </mark><br>
+    - **2024 data:** Full year provides complete picture without seasonal variation
+    - **Facility counts:** Shows how common each occupancy level is 
+
+<mark>What ‘underwater labour’ contributed to your final data visualization product?</mark><br>
+    - **Data preparation:** Converting text percentages to numeric values, researching TPA methodology to understand >100% occupancy, and selecting optimal time period.
+    - **Trial and error:** Testing multiple chart types (bar charts, scatter plots) and experimenting with 5-10 bin sizes and color schemes before finding effective visualization.
+    - **Refinement:** Adjusting labels, fonts, annotation boxes, writing code documentation, and testing reproducibility. Approximately 3-5 hours total work.
+
+----
+
+## Second Visualization
+### Toronto Parking Facilities: Size vs Occupancy Analysis (2024)
+![alt text](parking_scatter_sidebyside.png)
+
+<mark>1. What software did you use to create your data visualization?</mark><br>
+I used Python with Matplotlib, Seaborn, and Pandas libraries
+
+<mark>2. Who is your intended audience?</mark><br>
+The intended audience is policymakers and urban planners within the Toronto municipal government. This includes officials in departments responsible for transportation, parking management, and city infrastructure who need data-driven insights to make decisions about resource allocation, pricing, and future development.
+
+<mark>3. What information or message are you trying to convey with your visualization?</mark><br>
+**The core message is:** "To effectively manage Toronto's parking, we must address two distinct issues: the critical outliers and the broader trends within the main cluster of facilities."
+**More specifically:**
+- **Outliers (Left Plot):** A small number of facilities have extreme characteristics (either massively oversized or severely over-capacity) that require immediate, targeted intervention.
+- **Main Cluster (Right Plot):** For the vast majority of facilities, there is a clear, inverse relationship between size and occupancy. Larger parking facilities are, on average, significantly underutilized.
+
+<mark>4. What aspects of design did you consider when making your visualization? How did you apply them? With what elements of your plots?</mark><br>
+
+I used a dual-plot layout to separate outlier analysis (left) from pattern analysis (right), preventing extreme values from obscuring the main trend. Visual distinction was achieved through diamond shapes with red borders for outliers versus circles for regular facilities. I applied intuitive color coding by size (blue→green→orange→red) and added contextual threshold lines at 50%, 75%, and 100% occupancy to guide interpretation. Annotations with arrows labeled the two most extreme cases, while a shared legend and statistics boxes provided essential context without cluttering the plots, ensuring both transparency and analytical clarity for policymakers.
+
+<mark>5. How did you ensure that your data visualizations are reproducible? If the tool you used to make your data visualization is not reproducible, how will this impact your data visualization?</mark><br>
+
+The code is well-documented and fetches data directly from Toronto's Open Data API, eliminating the need to manually download datasets. All parameters (colors, thresholds, fonts) are explicitly defined in code.
+
+If a non-reproducible tool like manual Excel charting were used, it would be nearly impossible to guarantee the same result. This would impact the visualization by making it unreliable for auditing, difficult to update with new data, and untrustworthy for making important policy decisions.
+
+<mark>6. How did you ensure that your data visualization is accessible?</mark><br>
+- **High contrast:** Dark text on light background, colored bars with black borders
+- **Not color-dependent:** Beside colors, each bar labeled with numbers, readable in grayscale
+- **Large fonts:** 10-15pt sizes, readable from distance or when printed
+- **Simple chart type:** Histogram universally understood
+- **Clear interpretation:** Annotation boxes explain what the data means
+
+<mark>7. Who are the individuals and communities who might be impacted by your visualization?</mark><br>
+- TPA operations and financial planning teams
+- Low-income residents affected by parking costs and availability
+- People with disabilities needing accessible parking at high-demand facilities
+- Communities near over-capacity facilities experiencing increased traffic
+- City government making infrastructure decisions
+- Business owners dependent on customer parking
+
+<mark>8. How did you choose which features of your chosen dataset to include or exclude from your visualization?</mark><br>
+- **Total Available Spaces:** This is the key metric for "Facility Size," which is the central subject of the analysis.
+- **Average Daily Peak Occupancy %:** This is the primary performance metric we want to analyze against size.
+- **Car Park Location:** Used to label specific outliers for context (e.g., "695 Lansdowne Ave").
+
+<mark>9. What ‘underwater labour’ contributed to your final data visualization product?</mark><br>
+Data exploration: Testing different outlier thresholds (300 vs 500 spaces), researching why facilities exceed 100% (monthly permits vs daily capacity). Failed iterations: Tried single plot before realizing dual-view was needed, experimented with different color schemes and marker styles. Code refactoring: 
+Created reusable function to avoid code duplication, tested with different datasets. Approximately 4-6 hours total.
+
+------
 
 - This assignment is intentionally open-ended - you are free to create static or dynamic data visualizations, maps, or whatever form of data visualization you think best communicates your information to your audience of choice! 
 - Total word count should not exceed **(as a maximum) 1000 words** 
