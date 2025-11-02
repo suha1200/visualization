@@ -62,47 +62,51 @@ If a non-reproducible tool like manual Excel charting were used, it would be nea
 ### Toronto Parking Facilities: Size vs Occupancy Analysis (2024)
 ![alt text](parking_scatter_sidebyside.png)
 
-<mark>What software did you use to create your data visualization?</mark><br>
+<mark>1. What software did you use to create your data visualization?</mark><br>
 I used Python with Matplotlib, Seaborn, and Pandas libraries
 
-<mark>Who is your intended audience?</mark><br>
+<mark>2. Who is your intended audience?</mark><br>
 The intended audience is policymakers and urban planners within the Toronto municipal government. This includes officials in departments responsible for transportation, parking management, and city infrastructure who need data-driven insights to make decisions about resource allocation, pricing, and future development.
 
-<mark>What information or message are you trying to convey with your visualization?</mark><br>
+<mark>3. What information or message are you trying to convey with your visualization?</mark><br>
 **The core message is:** "To effectively manage Toronto's parking, we must address two distinct issues: the critical outliers and the broader trends within the main cluster of facilities."
 **More specifically:**
 - **Outliers (Left Plot):** A small number of facilities have extreme characteristics (either massively oversized or severely over-capacity) that require immediate, targeted intervention.
 - **Main Cluster (Right Plot):** For the vast majority of facilities, there is a clear, inverse relationship between size and occupancy. Larger parking facilities are, on average, significantly underutilized.
 
-<mark>What aspects of design did you consider when making your visualization? How did you apply them? With what elements of your plots?</mark><br>
-To ensure clarity, I used a dual-plot design: one showing all data (with outliers highlighted) and a second "zoomed-in" view for the main cluster. This separates extreme cases from the general trend. I immediately identified outliers with red-bordered diamond shapes, while using clear titles, axis labels, and threshold lines (50%, 75%, 100%) to provide essential context for interpretation.
+<mark>4. What aspects of design did you consider when making your visualization? How did you apply them? With what elements of your plots?</mark><br>
 
-<mark>How did you ensure that your data visualizations are reproducible? If the tool you used to make your data visualization is not reproducible, how will this impact your data visualization?</mark><br>
+I used a dual-plot layout to separate outlier analysis (left) from pattern analysis (right), preventing extreme values from obscuring the main trend. Visual distinction was achieved through diamond shapes with red borders for outliers versus circles for regular facilities. I applied intuitive color coding by size (blue→green→orange→red) and added contextual threshold lines at 50%, 75%, and 100% occupancy to guide interpretation. Annotations with arrows labeled the two most extreme cases, while a shared legend and statistics boxes provided essential context without cluttering the plots, ensuring both transparency and analytical clarity for policymakers.
 
-All the code are well documented and no need to download any dataset. The dataset that used by fetching the metadata from the "parking-occupancy" dataset and convert the API data to a dataframe. All parameters (colors, bins, fonts) explicitly defined in code
+<mark>5. How did you ensure that your data visualizations are reproducible? If the tool you used to make your data visualization is not reproducible, how will this impact your data visualization?</mark><br>
+
+The code is well-documented and fetches data directly from Toronto's Open Data API, eliminating the need to manually download datasets. All parameters (colors, thresholds, fonts) are explicitly defined in code.
 
 If a non-reproducible tool like manual Excel charting were used, it would be nearly impossible to guarantee the same result. This would impact the visualization by making it unreliable for auditing, difficult to update with new data, and untrustworthy for making important policy decisions.
 
-<mark>How did you ensure that your data visualization is accessible?</mark><br>
+<mark>6. How did you ensure that your data visualization is accessible?</mark><br>
 - **High contrast:** Dark text on light background, colored bars with black borders
 - **Not color-dependent:** Beside colors, each bar labeled with numbers, readable in grayscale
 - **Large fonts:** 10-15pt sizes, readable from distance or when printed
 - **Simple chart type:** Histogram universally understood
 - **Clear interpretation:** Annotation boxes explain what the data means
 
-<mark>Who are the individuals and communities who might be impacted by your visualization?</mark><br>
+<mark>7. Who are the individuals and communities who might be impacted by your visualization?</mark><br>
 - TPA operations and financial planning teams
+- Low-income residents affected by parking costs and availability
+- People with disabilities needing accessible parking at high-demand facilities
+- Communities near over-capacity facilities experiencing increased traffic
 - City government making infrastructure decisions
-- Commuters and residents choosing where to park
 - Business owners dependent on customer parking
 
-<mark>How did you choose which features of your chosen dataset to include or exclude from your visualization?</mark><br>
+<mark>8. How did you choose which features of your chosen dataset to include or exclude from your visualization?</mark><br>
 - **Total Available Spaces:** This is the key metric for "Facility Size," which is the central subject of the analysis.
 - **Average Daily Peak Occupancy %:** This is the primary performance metric we want to analyze against size.
 - **Car Park Location:** Used to label specific outliers for context (e.g., "695 Lansdowne Ave").
 
-<mark>What ‘underwater labour’ contributed to your final data visualization product?</mark><br>
-The "underwater labour" was the unseen work before the final plot, including: cleaning the data (fixing formats, handling blanks), analyzing it (finding outliers, calculating statistics), and iteratively coding the visualization to highlight key insights like the size-occupancy relationship (Writing and debugging the code to create the dual-plot figure. Experimenting with colors, shapes, and annotations to make the key insights visually prominent. Adjusting scales and layouts to improve readability.) Approximately 4-6 hours total work.
+<mark>9. What ‘underwater labour’ contributed to your final data visualization product?</mark><br>
+Data exploration: Testing different outlier thresholds (300 vs 500 spaces), researching why facilities exceed 100% (monthly permits vs daily capacity). Failed iterations: Tried single plot before realizing dual-view was needed, experimented with different color schemes and marker styles. Code refactoring: 
+Created reusable function to avoid code duplication, tested with different datasets. Approximately 4-6 hours total.
 
 ------
 
